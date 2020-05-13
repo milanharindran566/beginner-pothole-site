@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>REPORT A POTHOLE</title>
+	<link rel="stylesheet" type="text/css" href="show.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+   .gmap_canvas {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+    .gmap_canvas iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 75% !important;
+    }
+	</style>
+</head>
+<body onload="locate()">
+	<div class="container-fluid">
+		<div class="split left">
+			<div class="centered">
+				<!--<img src="pothole.jpg" id = "ph">-->
+				<div class="mapouter">
+					<div class="gmap_canvas">
+						<iframe width="900" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=kerala%20kochi&t=k&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+						</iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="split right">
+			<div class="centered">
+				<div class="hd">
+					<h1 align="center"><b> ENTER POTHOLE DETAILS</b></h1>
+				</div>
+				<form>
+					<b>
+					Pincode 
+					<br><input type="number" name="slno" required align="middle"><br><br>
+					Location <br>
+					<input type="text" name="loc" required><br><br>
+					LandMark (if any) <br>
+						<input type="text" name = "lm"><br><br>
+					Image url <br>
+					<input type="text" name="imgs"><br><br>
+					Image <br>
+					<input type="file" name="pic" accept="image/*" required>
+  					<input type="submit"><br><br>
+					<label for = "Danger" id="Danger"> Danger Level (Out of 5)</label><br>
+					<select id="Danger" name="level" required>
+						<option value="one">1</option>
+						<option value="two">2</option>
+						<option value="three">3</option>
+						<option value="four">4</option>
+						<option value="five">5</option>
+					</select>
+					<br><br>
+					Details of accidents occurred (if any)
+					<input type="text" name="accs"><br><br>
+					<br>
+					<div class="row justify-content-center">
+						<input type="submit" class="btn btn-danger" value="Report" id="btn">
+					</div>
+				</b>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--javascript code for gmap canvas-->
+
+	<script>
+    	var im = 'pinpng.png';
+    	function locate(){
+        	navigator.geolocation.getCurrentPosition(initialize,fail);
+   		}
+
+    	function initialize(position) {
+        	var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        	var mapOptions = {
+          	zoom: 4,
+          	center: myLatLng,
+          	mapTypeId: google.maps.MapTypeId.ROADMAP
+        	}
+        	var map = new google.maps.Map(document.getElementById('gmap_canvas'),
+                                      mapOptions);
+        	var userMarker = new google.maps.Marker({
+            	position: myLatLng,
+            	map: map,
+            	icon: im
+       		 });
+      	}.
+
+     	function fail(){
+         	alert('navigator.geolocation failed, may not be supported');
+     	}
+    	</script>
+
+</body>
+</html>

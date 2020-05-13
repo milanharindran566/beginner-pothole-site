@@ -1,0 +1,42 @@
+
+*
+{
+    font-family: 'Roboto Mono',
+    monospace;
+    font-weight: bolder;
+}
+.jumbotron
+{
+    background-image: url(dng.jpg);
+    background-size: cover;
+    color: white;
+}
+
+.btn{
+
+    padding: 15px 30px;
+    border-radius: 30px;
+    background: linear-gradient(to right, yellow,orange);
+    color: black;
+}
+
+#rpt
+{
+    background-color: aquamarine;
+}
+
+#srch 
+{
+    background-color: greenyellow;
+}
+
+#lgn
+{
+    background-color: lightblue;
+}
+
+body
+{
+    background: repeating-linear-gradient(grey , white);
+}
+
